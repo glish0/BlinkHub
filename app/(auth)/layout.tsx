@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import '../globals.css'
+import { ClerkProvider } from '@clerk/nextjs'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -15,8 +17,11 @@ export default function Layout({
   children: React.ReactNode
 }) {
   return (
-    <body className={`${inter.className} bg-purple-950`}>
-      {children}
-    </body>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${inter.className} bg-gray-950 flex justify-center mt-40 m-auto`}>{children}</body>
+      </html>
+    </ClerkProvider>
+   
   )
 }
